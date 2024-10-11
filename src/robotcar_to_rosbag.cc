@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
 	bag.open("test.bag", rosbag::bagmode::Write);
 
 // GPS
-	ifstream fin ("/home/thesidjway/datasets/RobotCar/2014-06-26-08-53-56/gps/gps.csv");
+	ifstream fin ("/home/andrea/Documents/oxford/gps/gps.csv");
 	string gpsStr;
 	long num_iterations = 0;
 	while(getline(fin, gpsStr))  {
@@ -90,13 +90,13 @@ int main(int argc, char **argv) {
 // Images     
 	string imgStr;
         int count = 0;
-	ifstream fin2 ("/home/thesidjway/datasets/RobotCar/2014-06-26-08-53-56/stereo.timestamps");
+	ifstream fin2 ("/home/andrea/Documents/oxford/stereo.timestamps");
 	while(getline(fin2, imgStr))  {
 		cout << "Count: " << count;
 		count++;
 		stringstream ss;
 		double timestamp = stod(imgStr.substr(0, imgStr.length() - 2));
-		ss << setprecision(20) << "/home/thesidjway/datasets/RobotCar/2014-06-26-08-53-56/stereo/left/" << timestamp <<".png";
+		ss << setprecision(20) << "/home/andrea/Documents/oxford/stereo/left/" << timestamp <<".png";
 		cout << ss.str() << endl;
 		cv::Mat image = cv::imread(ss.str(), CV_8UC1);
 		string timestamp_read = imgStr.substr(0, 16);
